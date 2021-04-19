@@ -1,0 +1,18 @@
+* {
+    box-sizing: border-box;
+}
+header {
+    position: relative;
+text-align: center;
+padding:14px;
+background: rgb(48, 46, 46);
+
+}
+main div img{
+    position: relative;
+    top :20px; 
+    left:180px;
+    width: 30%;
+    height: 30%;
+
+}
