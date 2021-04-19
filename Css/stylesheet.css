@@ -5,14 +5,30 @@ header {
     position: relative;
 text-align: center;
 padding:14px;
-background: rgb(48, 46, 46);
+background:cadetblue;
+
 
 }
-main div img{
+h1 {
+    text-shadow: azure;
+    font-family:serif;
+}
+
+main img {
+    float: left; width: 200px;
+    height: 200px;
+    margin: 5px 8px;
+}
+body {
+    background-color: burlywood;
+}
+main button{
+    float: right;
+    width: 150px; 
+     height: 50px;
     position: relative;
-    top :20px; 
-    left:180px;
-    width: 30%;
-    height: 30%;
+    right: 300px;
 
-}
+    background-color: black;
+    color: white;
+    }
