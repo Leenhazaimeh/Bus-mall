@@ -53,21 +53,32 @@ function randomIndex() {
   return Math.floor(Math.random() * BusMall.productName.length);
 };
 
-
+let arrIndex=[];
+let check1;
+let check2;
+let check3;
 
 function RenderImages() {
 
 
-  leftIndex = randomIndex();
-  middelIndex = randomIndex();
-  rightIndex = randomIndex();
+  //leftIndex = randomIndex();
+  //middelIndex = randomIndex();
+  //rightIndex = randomIndex();
 
+  //heck1=arrIndex.includes(leftIndex);
+  //check2=arrIndex.includes(rightIndex);
+  //check3=arrIndex.includes(middelIndex);
 
-  while (leftIndex === middelIndex || leftIndex === rightIndex || middelIndex === rightIndex) {
+  while (leftIndex === middelIndex || leftIndex === rightIndex || middelIndex === rightIndex  || arrIndex.includes(leftIndex)||arrIndex.includes(rightIndex)||arrIndex.includes(middelIndex)) {
     leftIndex = randomIndex();
     middelIndex = randomIndex();
     rightIndex = randomIndex();
+
+    //check1=arrIndex.includes(leftIndex);
+    //check2=arrIndex.includes(rightIndex);
+    //check3=arrIndex.includes(middelIndex);
   };
+
   console.log(BusMall.productName);
   img1.src = BusMall.productName[leftIndex].source;
   BusMall.productName[leftIndex].shown++;
@@ -75,6 +86,9 @@ function RenderImages() {
   BusMall.productName[rightIndex].shown++;
   img3.src = BusMall.productName[middelIndex].source;
   BusMall.productName[middelIndex].shown++;
+
+
+  arrIndex=[leftIndex,rightIndex,middelIndex];
 
 }
 RenderImages();
