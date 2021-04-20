@@ -112,6 +112,7 @@ let button = document.getElementById('click');
 button.addEventListener('click', showingList);
  function showingList(){
   renderList();
+  chart()
  button.removeEventListener('click',showingList);
 
 }
@@ -140,3 +141,32 @@ function genrateRandomIndex() {
   return Math.floor(Math.random() * BusMall.productName.length);
 }
 
+
+
+
+function chart(){
+  var ctx = document.getElementById('myChart').getContext('2d');
+  let myChart = new Chart(ctx, { 
+      type: 'bar',
+      data: {
+          labels:  arrofNames,
+          datasets: [{
+              label: 'Number of Votes',
+              data: arrofVotes,
+              backgroundColor: 
+                  'rgba(191, 63, 63, 0.7)',
+              
+              borderWidth: 1
+          }, {
+              label: 'Times of Shown',
+              data: arrOfshowen,
+              backgroundColor: 
+                  'rgba(63, 191, 63, 0.7)',
+                  
+                  borderWidth: 1
+
+              }]
+
+          },
+ });
+}
