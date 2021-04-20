@@ -1,6 +1,6 @@
 'use strict';
 
-
+ 
 
 let arrofVotes = [];
 let arrOfshowen = [];
@@ -8,7 +8,7 @@ let img1 = document.getElementById('imge1');
 let img2 = document.getElementById('imge2');
 let img3 = document.getElementById('imge3');
 let containar = document.getElementById('busimg');
-let max = 25;
+let max = 10;
 let count = 0;
 
 let leftIndex;
@@ -26,6 +26,7 @@ function BusMall(name, source) {
 }
 
 BusMall.productName = [];
+
 
 new BusMall('bag', '../images/bag.jpg');
 new BusMall('banana', '../images/banana.jpg');
@@ -48,6 +49,24 @@ new BusMall('usb', '../images/usb.gif');
 new BusMall('water-can', '../images/water-can.jpg');
 new BusMall('wine-glass', '../images/wine-glass.jpg');
 //console.log(BusMall.productName);
+
+
+function saveTols(){
+ let  formArr = JSON.stringify(BusMall.productName);
+  localStorage.setItem('check', formArr);
+}
+
+
+function getFromls() {
+  let Feed = localStorage.getItem('check');
+ let data = JSON.parse(Feed);
+ 
+  if (Feed !== null){
+    BusMall.productName= data ;
+  }
+}
+
+
 
 function randomIndex() {
   return Math.floor(Math.random() * BusMall.productName.length);
@@ -79,7 +98,7 @@ function RenderImages() {
     //check3=arrIndex.includes(middelIndex);
   };
 
-  console.log(BusMall.productName);
+  //console.log(BusMall.productName);
   img1.src = BusMall.productName[leftIndex].source;
   BusMall.productName[leftIndex].shown++;
   img2.src = BusMall.productName[rightIndex].source;
@@ -99,7 +118,12 @@ containar.addEventListener('click', handelClicking);
 
 function handelClicking(event) {
   count++;
+if (event.target.id!== 'busimg'){
+
+
+
   if (max >= count) {
+    
     if (event.target.id === 'imge1') {
       BusMall.productName[leftIndex].votes++;
     } else if (event.target.id === 'imge3') {
@@ -113,12 +137,16 @@ function handelClicking(event) {
 
 
     }
+    saveTols();
     RenderImages();
 
   }
+}
   else {
     //renderList();
+    getFromls();
     containar.removeEventListener('click',handelClicking);
+   
   }
 }
 
@@ -151,9 +179,7 @@ function renderList() {
 
 
 
-function genrateRandomIndex() {
-  return Math.floor(Math.random() * BusMall.productName.length);
-}
+
 
 
 
@@ -184,3 +210,5 @@ function chart(){
           },
  });
 }
+getFromls();
+console.log(BusMall.productName);
