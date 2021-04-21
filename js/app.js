@@ -8,7 +8,7 @@ let img1 = document.getElementById('imge1');
 let img2 = document.getElementById('imge2');
 let img3 = document.getElementById('imge3');
 let containar = document.getElementById('busimg');
-let max = 10;
+let max = 25;
 let count = 0;
 
 let leftIndex;
